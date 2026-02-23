@@ -1,0 +1,110 @@
+query DrugProfileQuery($chemblId: String!) {
+    drug(chemblId: $chemblId) {
+        id
+        ...DrugProfileHeaderFragment
+        ...DrugProfileSummaryFragment
+        __typename
+    }
+}
+
+fragment DrugProfileHeaderFragment on Drug {
+    description
+    drugType
+    synonyms
+    parentMolecule {
+        id
+        name
+        __typename
+    }
+    childMolecules {
+        id
+        name
+        __typename
+    }
+    isApproved
+    hasBeenWithdrawn
+    blackBoxWarning
+    maximumClinicalTrialPhase
+    tradeNames
+    yearOfFirstApproval
+    __typename
+}
+
+fragment DrugProfileSummaryFragment on Drug {
+    ...MechanismsOfActionSummaryFragment
+    ...IndicationsSummaryFragment
+    ...DrugKnownDrugsSummaryFragment
+    ...DrugWarningsSummaryFragment
+    ...DrugPharmacogenomicsSummaryFragment
+    ...AdverseEventsSummaryFragment
+    ...DrugBibliography
+    __typename
+}
+
+fragment MechanismsOfActionSummaryFragment on Drug {
+    mechanismsOfAction {
+        uniqueActionTypes
+        uniqueTargetTypes
+        __typename
+    }
+    parentMolecule {
+        id
+        name
+        __typename
+    }
+    childMolecules {
+        id
+        name
+        __typename
+    }
+    __typename
+}
+
+fragment IndicationsSummaryFragment on Drug {
+    indications {
+        count
+        __typename
+    }
+    __typename
+}
+
+fragment DrugKnownDrugsSummaryFragment on Drug {
+    knownDrugs {
+        count
+        uniqueTargets
+        uniqueDiseases
+        __typename
+    }
+    __typename
+}
+
+fragment DrugWarningsSummaryFragment on Drug {
+    hasBeenWithdrawn
+    blackBoxWarning
+    __typename
+}
+
+fragment DrugPharmacogenomicsSummaryFragment on Drug {
+    pharmacogenomics {
+        targetFromSourceId
+        __typename
+    }
+    __typename
+}
+
+fragment AdverseEventsSummaryFragment on Drug {
+    adverseEvents {
+        count
+        __typename
+    }
+    __typename
+}
+
+fragment DrugBibliography on Drug {
+    literatureOcurrences {
+        count
+        filteredCount
+        __typename
+    }
+    __typename
+}

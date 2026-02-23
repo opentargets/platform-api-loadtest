@@ -1,0 +1,77 @@
+query DiseaseProfileQuery($efoId: String!) {
+    disease(efoId: $efoId) {
+        id
+        ...DiseaseProfileHeaderFragment
+        ...DiseaseProfileSummaryFragment
+        __typename
+    }
+    studies(diseaseIds: [$efoId], page: { size: 1, index: 0 }) {
+        count
+        __typename
+    }
+}
+
+fragment DiseaseProfileHeaderFragment on Disease {
+    description
+    synonyms {
+        relation
+        terms
+        __typename
+    }
+    __typename
+}
+
+fragment DiseaseProfileSummaryFragment on Disease {
+    ...OntologySummaryFragment
+    ...DiseaseKnownDrugsSummaryFragment
+    ...PhenotypesSummaryFragment
+    ...OTProjectsSummaryFragment
+    ...DiseaseBibliography
+    __typename
+}
+
+fragment OntologySummaryFragment on Disease {
+    id
+    name
+    isTherapeuticArea
+    therapeuticAreas {
+        id
+        __typename
+    }
+    __typename
+}
+
+fragment DiseaseKnownDrugsSummaryFragment on Disease {
+    knownDrugs {
+        count
+        uniqueDrugs
+        uniqueTargets
+        __typename
+    }
+    __typename
+}
+
+fragment PhenotypesSummaryFragment on Disease {
+    phenotypes(page: { index: 0, size: 0 }) {
+        count
+        __typename
+    }
+    __typename
+}
+
+fragment OTProjectsSummaryFragment on Disease {
+    otarProjects {
+        otarCode
+        __typename
+    }
+    __typename
+}
+
+fragment DiseaseBibliography on Disease {
+    literatureOcurrences {
+        count
+        filteredCount
+        __typename
+    }
+    __typename
+}

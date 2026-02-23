@@ -1,0 +1,16 @@
+{
+    "ids": [],
+    "startYear": null,
+    "startMonth": null,
+    "endYear": null,
+    "endMonth": null,
+    "threshold": 0.5,
+    "size": 15,
+    "entityNames": [
+        "disease",
+        "drug",
+        "target"
+    ],
+    "cursor": null,
+    "id": "$ID"
+}

@@ -1,0 +1,210 @@
+query TargetProfileQuery($ensgId: String!) {
+    target(ensemblId: $ensgId) {
+        id
+        ...TargetProfileHeaderFragment
+        ...TargetProfileSummaryFragment
+        __typename
+    }
+}
+
+fragment TargetProfileHeaderFragment on Target {
+    synonyms {
+        label
+        source
+        __typename
+    }
+    functionDescriptions
+    isEssential
+    genomicLocation {
+        chromosome
+        start
+        end
+        strand
+        __typename
+    }
+    __typename
+}
+
+fragment TargetProfileSummaryFragment on Target {
+    ...TargetKnownDrugsSummaryFragment
+    ...TractabilitySummaryFragment
+    ...SafetySummaryFragment
+    ...TargetPharmacogenomicsSummaryFragment
+    ...TargetQTLCredibleSetsSummaryFragment
+    ...ChemicalProbesSummaryFragment
+    ...ExpressionSummaryFragment
+    ...DepmapSummaryFragment
+    ...SubcellularLocationFragment
+    ...GeneOntologySummaryFragment
+    ...GeneticConstraintFragment
+    ...MolecularStructureSummaryFragment
+    ...TargetMolecularInteractionsSummaryFragment
+    ...PathwaysSummaryFragment
+    ...CancerHallmarksSummaryFragment
+    ...MousePhenotypesSummaryFragment
+    ...CompGenomicsSummaryFragment
+    ...EntitiesSummaryFragment
+    __typename
+}
+
+fragment TargetKnownDrugsSummaryFragment on Target {
+    knownDrugs {
+        count
+        uniqueDrugs
+        uniqueDiseases
+        __typename
+    }
+    __typename
+}
+
+fragment TractabilitySummaryFragment on Target {
+    id
+    tractability {
+        modality
+        __typename
+    }
+    __typename
+}
+
+fragment SafetySummaryFragment on Target {
+    safetyLiabilities {
+        event
+        __typename
+    }
+    __typename
+}
+
+fragment TargetPharmacogenomicsSummaryFragment on Target {
+    pharmacogenomics {
+        targetFromSourceId
+        __typename
+    }
+    __typename
+}
+
+fragment TargetQTLCredibleSetsSummaryFragment on Target {
+    credibleSets(page: { size: 1, index: 0 }) {
+        count
+        __typename
+    }
+    __typename
+}
+
+fragment ChemicalProbesSummaryFragment on Target {
+    chemicalProbes {
+        id
+        __typename
+    }
+    __typename
+}
+
+fragment ExpressionSummaryFragment on Target {
+    expressions {
+        rna {
+            level
+            __typename
+        }
+        protein {
+            level
+            __typename
+        }
+        __typename
+    }
+    __typename
+}
+
+fragment DepmapSummaryFragment on Target {
+    depMapEssentiality {
+        tissueName
+        __typename
+    }
+    __typename
+}
+
+fragment SubcellularLocationFragment on Target {
+    subcellularLocations {
+        source
+        __typename
+    }
+    __typename
+}
+
+fragment GeneOntologySummaryFragment on Target {
+    id
+    geneOntology {
+        aspect
+        __typename
+    }
+    __typename
+}
+
+fragment GeneticConstraintFragment on Target {
+    geneticConstraint {
+        constraintType
+        upperBin6
+        __typename
+    }
+    __typename
+}
+
+fragment MolecularStructureSummaryFragment on Target {
+    proteinIds {
+        id
+        source
+        __typename
+    }
+    __typename
+}
+
+fragment TargetMolecularInteractionsSummaryFragment on Target {
+    interactions {
+        count
+        __typename
+    }
+    __typename
+}
+
+fragment PathwaysSummaryFragment on Target {
+    pathways {
+        pathwayId
+        __typename
+    }
+    __typename
+}
+
+fragment CancerHallmarksSummaryFragment on Target {
+    hallmarks {
+        cancerHallmarks {
+            impact
+            label
+            __typename
+        }
+        __typename
+    }
+    __typename
+}
+
+fragment MousePhenotypesSummaryFragment on Target {
+    mousePhenotypes {
+        modelPhenotypeId
+        __typename
+    }
+    __typename
+}
+
+fragment CompGenomicsSummaryFragment on Target {
+    homologues {
+        homologyType
+        __typename
+    }
+    __typename
+}
+
+fragment EntitiesSummaryFragment on Target {
+    literatureOcurrences {
+        count
+        filteredCount
+        __typename
+    }
+    __typename
+}
