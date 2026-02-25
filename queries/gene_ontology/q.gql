@@ -1,0 +1,18 @@
+query GeneOntology($ensemblId: String!) {
+    target(ensemblId: $ensemblId) {
+        id
+        geneOntology {
+            term {
+                id
+                name
+                __typename
+            }
+            aspect
+            evidence
+            geneProduct
+            source
+            __typename
+        }
+        __typename
+    }
+}
