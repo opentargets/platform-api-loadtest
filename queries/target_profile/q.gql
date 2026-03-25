@@ -26,7 +26,7 @@ fragment TargetProfileHeaderFragment on Target {
 }
 
 fragment TargetProfileSummaryFragment on Target {
-    ...TargetKnownDrugsSummaryFragment
+    ...TargetDrugsSummaryFragment
     ...TractabilitySummaryFragment
     ...SafetySummaryFragment
     ...TargetPharmacogenomicsSummaryFragment
@@ -47,11 +47,9 @@ fragment TargetProfileSummaryFragment on Target {
     __typename
 }
 
-fragment TargetKnownDrugsSummaryFragment on Target {
-    knownDrugs {
+fragment TargetDrugsSummaryFragment on Target {
+    drugAndClinicalCandidates {
         count
-        uniqueDrugs
-        uniqueDiseases
         __typename
     }
     __typename

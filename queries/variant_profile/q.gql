@@ -107,7 +107,7 @@ fragment VariantQTLCredibleSetsSummaryFragment on Variant {
 }
 
 fragment EnhancerToGenePredictionsSummaryFragment on Variant {
-    intervals {
+    enhancerToGenes {
         count
         __typename
     }

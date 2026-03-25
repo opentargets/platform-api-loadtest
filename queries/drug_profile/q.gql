@@ -21,19 +21,14 @@ fragment DrugProfileHeaderFragment on Drug {
         name
         __typename
     }
-    isApproved
-    hasBeenWithdrawn
-    blackBoxWarning
-    maximumClinicalTrialPhase
+    maximumClinicalStage
     tradeNames
-    yearOfFirstApproval
     __typename
 }
 
 fragment DrugProfileSummaryFragment on Drug {
     ...MechanismsOfActionSummaryFragment
     ...IndicationsSummaryFragment
-    ...DrugKnownDrugsSummaryFragment
     ...DrugWarningsSummaryFragment
     ...DrugPharmacogenomicsSummaryFragment
     ...AdverseEventsSummaryFragment
@@ -68,19 +63,11 @@ fragment IndicationsSummaryFragment on Drug {
     __typename
 }
 
-fragment DrugKnownDrugsSummaryFragment on Drug {
-    knownDrugs {
-        count
-        uniqueTargets
-        uniqueDiseases
+fragment DrugWarningsSummaryFragment on Drug {
+    drugWarnings {
+        warningType
         __typename
     }
-    __typename
-}
-
-fragment DrugWarningsSummaryFragment on Drug {
-    hasBeenWithdrawn
-    blackBoxWarning
     __typename
 }
 

@@ -23,7 +23,7 @@ fragment DiseaseProfileHeaderFragment on Disease {
 
 fragment DiseaseProfileSummaryFragment on Disease {
     ...OntologySummaryFragment
-    ...DiseaseKnownDrugsSummaryFragment
+    ...DrugsSummaryFragment
     ...PhenotypesSummaryFragment
     ...OTProjectsSummaryFragment
     ...DiseaseBibliography
@@ -41,11 +41,9 @@ fragment OntologySummaryFragment on Disease {
     __typename
 }
 
-fragment DiseaseKnownDrugsSummaryFragment on Disease {
-    knownDrugs {
+fragment DrugsSummaryFragment on Disease {
+    drugAndClinicalCandidates {
         count
-        uniqueDrugs
-        uniqueTargets
         __typename
     }
     __typename
